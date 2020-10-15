@@ -1,0 +1,50 @@
+﻿
+@model IList<Model_test.Models.FizzBuzzModel>
+@{
+    ViewData["Title"] = "FizzBuzz";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Home" asp-action="FizzBuzz">
+    <div class="row">
+        <div class="col">
+            <div class="container">MIN:</div>
+            <input class="alert-secondary" id="min" name="minInput" value="1" />
+        </div>
+        <div class="col">
+            <div class="container">FIZZ:</div>
+            <input class="alert-secondary" id="fizz" name="fizzInput" value="3" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="container">MAX:</div>
+            <input class="alert-secondary" id="max" name="maxInput" value="100" />
+        </div>
+        <div class="col">
+            <div class="container">BUZZ:</div>
+            <input class="alert-secondary" id="buzz" name="buzzInput" value="5" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col offset-4">
+            <button>CARBONATE IT</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Count() > 0)
+{
+    <h1>Fizz Buzz Results</h1>
+}
+
+<table class="table table-striped table-light table-responsive">
+    @for(int i = 0; i < Model.Count(); i+=5)
+    {
+        <tr><td>@Model[i].Result</td><td>@Model[i + 1].Result</td><td>@Model[i + 2].Result</td><td>@Model[i + 3].Result</td><td>@Model[i + 4].Result</td></tr>
+        
+    }
+
+
+</table>
